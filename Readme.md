@@ -2,28 +2,14 @@
 
 These are extension functions for SQLite that can be added to a SQLite.pretty DB via the builder.
 
+See [the functions area of the ETLyte documentation](https://sorrell.github.io/etlyte) for further usage.
+
 ## Example
 
 ```
-public SQLiteDatabaseConnection DbConnection
-{
-    get
-    {
-        if (_dbcon == null)
-        {
-            SQLiteDatabaseConnectionBuilder dbbuilder;
-            if (_dbname == null)
-                dbbuilder = SQLiteDatabaseConnectionBuilder
-                        .InMemory;
-            else
-                dbbuilder = SQLiteDatabaseConnectionBuilder
-                        .Create(_dbname);
-
-            _dbcon = SQLitePCL.pretty.Functions.SqliteFn.Init(dbbuilder);
-        }
-        return _dbcon;
-    }
-}
+SQLiteDatabaseConnection DbConnection;
+SQLiteDatabaseConnectionBuilder dbbuilder = SQLiteDatabaseConnectionBuilder.InMemory;
+DbConnection = PrettyFn.Init(dbbuilder);
 ```
 
 We can now query SQLite using the functions in this library:
