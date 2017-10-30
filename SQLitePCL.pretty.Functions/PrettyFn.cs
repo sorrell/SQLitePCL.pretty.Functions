@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using SQLitePCL.core.Functions;
+using SQLitePCL.Functions.core;
+using SQLitePCL.pretty;
 
-namespace SQLitePCL.pretty.Functions
+namespace SQLitePCL.Functions.Pretty
 {
-    public static class SqliteFn
+    public static class PrettyFn
     {
         public static SQLiteDatabaseConnection Init(SQLiteDatabaseConnectionBuilder dbbuilder)
         {
@@ -23,6 +24,10 @@ namespace SQLitePCL.pretty.Functions
                 .WithScalarFunc("ISFLOAT",      IsFloat_Func)
                 .WithScalarFunc("ISDOUBLE",     IsDouble_Func)
                 .WithScalarFunc("ISDECIMAL",    IsDecimal_Func)
+                .WithScalarFunc("ISNONPOSINT",  IsNonPositiveInt_Func)
+                .WithScalarFunc("ISNONNEGINT",  IsNonNegativeInt_Func)
+                .WithScalarFunc("ISPOSINT",     IsPositiveInt_Func)
+                .WithScalarFunc("ISNEGINT",     IsNegativeInt_Func)
                 .WithScalarFunc("ISCHAR",       IsChar_Func)
                 .WithScalarFunc("ISGUID",       IsGuid_Func)
                 .WithScalarFunc("ISISOTIMESPAN",   IsISO8610Timespan_Func)
